@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Editor as DraftEditor, EditorState} from 'draft-js';
+import {Editor as DraftEditor, EditorState, RichUtils} from 'draft-js';
 import {EditorWrapper} from './elements';
 import 'draft-js/dist/Draft.css';
 
@@ -10,9 +10,20 @@ const Editor = () => {
     setCurrentState(state);
   };
 
+  const handleKeyCommand = (command, state) => {
+    const newState = RichUtils.handleKeyCommand(state, command);
+    if (newState) {
+      setCurrentState(newState);
+    }
+  };
+
   return (
     <EditorWrapper>
-      <DraftEditor editorState={currentState} onChange={onChange} />
+      <DraftEditor
+        editorState={currentState}
+        onChange={onChange}
+        handleKeyCommand={handleKeyCommand}
+      />
     </EditorWrapper>
   );
 };
