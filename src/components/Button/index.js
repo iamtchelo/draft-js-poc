@@ -16,7 +16,7 @@ const ButtonStyled = styled.button(({theme, actived}) => ({
 }));
 
 const Button = ({actived, onClick, children}) => (
-  <ButtonStyled type="button" actived={actived} onClick={onClick}>
+  <ButtonStyled type="button" actived={actived} onMouseDown={onClick}>
     {children}
   </ButtonStyled>
 );

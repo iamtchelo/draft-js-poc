@@ -22,7 +22,7 @@ const InlineStyleButtons = ({toggleStyle, currentStyle}) => (
     {buttons.map(button => (
       <Button
         key={`inline-button-${button.style}`}
-        onClick={toggleStyle}
+        onClick={toggleStyle(button.style)}
         actived={currentStyle.has(button.style)}
       >
         {button.label}

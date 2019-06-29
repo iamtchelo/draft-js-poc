@@ -19,10 +19,18 @@ const Editor = () => {
     }
   };
 
+  const toggleStyle = style => e => {
+    e.preventDefault();
+    setCurrentState(RichUtils.toggleInlineStyle(currentState, style));
+  };
+
   return (
     <Wrapper>
       <Toolbar>
-        <InlineStyleButtons currentStyle={currentInlineStyle} />
+        <InlineStyleButtons
+          toggleStyle={toggleStyle}
+          currentStyle={currentInlineStyle}
+        />
       </Toolbar>
       <Container>
         <DraftEditor
