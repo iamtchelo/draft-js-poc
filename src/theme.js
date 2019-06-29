@@ -1,7 +1,8 @@
 export default {
   colors: {
-    gray: '#CCC',
-    grayHigh: '#333',
-    grayLow: '#F4F4F4',
+    primary_color: '#913578',
+    gray: '#CCCCCC',
+    gray_high: '#333333',
+    gray_low: '#F4F4F4',
   },
 };
