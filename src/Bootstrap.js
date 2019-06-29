@@ -1,8 +1,9 @@
 import React from 'react';
+import Editor from './components/Editor';
 
 const Bootstrap = () => (
   <section>
-    <h1>Draft.js POC</h1>
+    <Editor />
   </section>
 );
 
