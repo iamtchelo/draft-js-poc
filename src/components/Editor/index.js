@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import {Editor as DraftEditor, EditorState, RichUtils} from 'draft-js';
-import {EditorWrapper} from './elements';
+import {Wrapper, Toolbar, Container} from './elements';
+import InlineStyleButtons from './inlineStyleButtons';
 import 'draft-js/dist/Draft.css';
 
 const Editor = () => {
   const [currentState, setCurrentState] = useState(EditorState.createEmpty());
+  const currentInlineStyle = currentState.getCurrentInlineStyle();
 
   const onChange = state => {
     setCurrentState(state);
@@ -18,13 +20,18 @@ const Editor = () => {
   };
 
   return (
-    <EditorWrapper>
-      <DraftEditor
-        editorState={currentState}
-        onChange={onChange}
-        handleKeyCommand={handleKeyCommand}
-      />
-    </EditorWrapper>
+    <Wrapper>
+      <Toolbar>
+        <InlineStyleButtons currentStyle={currentInlineStyle} />
+      </Toolbar>
+      <Container>
+        <DraftEditor
+          editorState={currentState}
+          onChange={onChange}
+          handleKeyCommand={handleKeyCommand}
+        />
+      </Container>
+    </Wrapper>
   );
 };
 
