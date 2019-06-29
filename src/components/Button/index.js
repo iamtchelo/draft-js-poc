@@ -7,14 +7,16 @@ const ButtonStyled = styled.button(({theme, actived}) => ({
   marginRight: '10px',
   fontSize: '0.9rem',
   fontWeight: 'bold',
+  borderRadius: '5px',
+  outline: 'none',
+  cursor: 'pointer',
   border: `1px solid ${theme.colors.primary_color_low}`,
   color: actived ? '#FFF' : theme.colors.primary_color,
   background: actived ? theme.colors.primary_color_low : '#FFF',
-  borderRadius: '5px',
 }));
 
-const Button = ({actived, onChange, children}) => (
-  <ButtonStyled type="button" actived={actived} onChange={onChange}>
+const Button = ({actived, onClick, children}) => (
+  <ButtonStyled type="button" actived={actived} onClick={onClick}>
     {children}
   </ButtonStyled>
 );
@@ -25,7 +27,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
   actived: PropTypes.bool,
-  onChange: PropTypes.func,
+  onClick: PropTypes.func,
   children: PropTypes.node,
 };
 
