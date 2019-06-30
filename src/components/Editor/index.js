@@ -1,11 +1,21 @@
 import React, {useState} from 'react';
-import {Editor as DraftEditor, EditorState, RichUtils} from 'draft-js';
+import {
+  Editor as DraftEditor,
+  EditorState,
+  RichUtils,
+  CompositeDecorator,
+} from 'draft-js';
 import {Wrapper, Toolbar, Container} from './elements';
 import InlineStyleButtons from './inlineStyleButtons';
+import decorators from './decorators';
 import 'draft-js/dist/Draft.css';
 
+const plugins = new CompositeDecorator(decorators);
+
 const Editor = () => {
-  const [currentState, setCurrentState] = useState(EditorState.createEmpty());
+  const [currentState, setCurrentState] = useState(
+    EditorState.createEmpty(plugins)
+  );
   const currentInlineStyle = currentState.getCurrentInlineStyle();
 
   const onChange = state => {
