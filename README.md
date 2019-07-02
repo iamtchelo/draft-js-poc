@@ -15,7 +15,7 @@ npm start
 ```
 
 <h1 align="center">
-  <img src="assets/app.gif" width="400">
+  <img src="assets/app.gif" width="640">
   <br>
   <br>
 </h1>
