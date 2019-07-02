@@ -14,4 +14,8 @@ Run the app
 npm start
 ```
 
-![App gif](https://raw.githubusercontent.com/iamtchelo/draft-js-poc/master/assets/app.gif?token=AA25LPQVJRSLJ4TJQOSHQ2K5DLFTI)
+<h1 align="center">
+  <img src="assets/app.gif" width="400">
+  <br>
+  <br>
+</h1>
