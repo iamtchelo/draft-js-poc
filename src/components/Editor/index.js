@@ -1,20 +1,14 @@
 import React, {useState} from 'react';
-import {
-  Editor as DraftEditor,
-  EditorState,
-  RichUtils,
-  CompositeDecorator,
-} from 'draft-js';
+import {Editor as DraftEditor, EditorState, RichUtils} from 'draft-js';
+import {blockRenderer, attachImage} from './utils';
 import {Wrapper, Toolbar, Container} from './elements';
 import InlineStyleButtons from './inlineStyleButtons';
 import decorators from './decorators';
 import 'draft-js/dist/Draft.css';
 
-const plugins = new CompositeDecorator(decorators);
-
 const Editor = () => {
   const [currentState, setCurrentState] = useState(
-    EditorState.createEmpty(plugins)
+    EditorState.createEmpty(decorators)
   );
   const currentInlineStyle = currentState.getCurrentInlineStyle();
 
@@ -41,12 +35,19 @@ const Editor = () => {
           toggleStyle={toggleStyle}
           currentStyle={currentInlineStyle}
         />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={attachImage(currentState, setCurrentState)}
+        />
       </Toolbar>
       <Container>
         <DraftEditor
           editorState={currentState}
           onChange={onChange}
+          blockRendererFn={blockRenderer}
           handleKeyCommand={handleKeyCommand}
+          placeholder="Draft something..."
         />
       </Container>
     </Wrapper>
